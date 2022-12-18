@@ -11,24 +11,46 @@ bufferline.setup({
     color_icons = true
   },
   highlights = {
-    separator = {
-      fg = '#073642',
-      bg = '#002b36',
-    },
-    separator_selected = {
-      fg = '#073642',
+    fill = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "StatusLineNC" },
     },
     background = {
-      fg = '#657b83',
-      bg = '#002b36'
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "StatusLine" },
+    },
+    buffer_visible = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
     },
     buffer_selected = {
-      fg = '#fdf6e3',
-      bold = true,
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
     },
-    fill = {
-      bg = '#073642'
-    }
+    separator = {
+      fg = { attribute = "bg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "StatusLine" },
+    },
+    separator_selected = {
+      fg = { attribute = "fg", highlight = "Special" },
+      bg = { attribute = "bg", highlight = "Normal" },
+    },
+    separator_visible = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "StatusLineNC" },
+    },
+    close_button = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "StatusLine" },
+    },
+    close_button_selected = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
+    },
+    close_button_visible = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
+    },
   },
 })
 
