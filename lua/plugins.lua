@@ -16,12 +16,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
--- vim.cmd [[
---   augroup packer_user_config
---   autocmd!
---   autocmd BufWritePost plugins.lua source <afile> | PackerSync
---   augroup end
--- ]]
+vim.cmd [[
+   augroup packer_user_config
+   autocmd!
+   autocmd BufWritePost plugins.lua source <afile> | PackerSync
+   augroup end
+ ]]
 
 local status, packer = pcall(require, "packer")
 if not status then
@@ -171,6 +171,7 @@ return packer.startup(function(use)
   use "tpope/vim-fugitive"
   use "tpope/vim-rhubarb"
   use "lewis6991/gitsigns.nvim"
+  use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
   -- use 'dinhhuy258/git.nvim' -- For git blame & browse
   use "kevinhwang91/nvim-bqf"
   use "vim-scripts/ReplaceWithRegister"
@@ -198,12 +199,12 @@ return packer.startup(function(use)
   use "thoughtbot/vim-rspec"
   use "machakann/vim-textobj-delimited"
   use "slim-template/vim-slim"
-  -- use {
-  --   'tanvirtin/vgit.nvim',
-  --   requires = {
-  --     'nvim-lua/plenary.nvim'
-  --   }
-  -- }
+  use {
+    "tanvirtin/vgit.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+  }
   use "ludovicchabant/vim-gutentags"
   use "webastien/vim-ctags"
   use "ThePrimeagen/refactoring.nvim"
@@ -222,7 +223,6 @@ return packer.startup(function(use)
 
   use "nathom/filetype.nvim"
   use "easymotion/vim-easymotion"
-  use "AndrewRadev/rails_extra.vim"
 
   use {
     "folke/trouble.nvim",
@@ -232,6 +232,12 @@ return packer.startup(function(use)
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
   }
+
+  use "AndrewRadev/rails_extra.vim"
+  use "AndrewRadev/splitjoin.vim"
+  use "AndrewRadev/rtranslate.vim"
+  use "AndrewRadev/exercism.vim"
+  use "AndrewRadev/switch.vim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

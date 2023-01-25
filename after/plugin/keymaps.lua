@@ -28,17 +28,16 @@ vim.g.maplocalleader = " "
 -- Cancel search highlighting with ESC
 keymap("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", opts)
 
-
 local keymap = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 local expr_opts = { noremap = true, expr = true, silent = true }
 
 vim.g.mapleader = " " -- Map leader to Space
 
-keymap('i', '<D-[>', '<Esc>', default_opts)
-keymap('n', '<D-o>', '<C-o>', default_opts)
-keymap('n', '<D-i>', '<C-i>', default_opts)
-keymap('v', '<D-/>', 'gc', default_opts)
+keymap("i", "<D-[>", "<Esc>", default_opts)
+keymap("n", "<D-o>", "<C-o>", default_opts)
+keymap("n", "<D-i>", "<C-i>", default_opts)
+keymap("v", "<D-/>", "gc", default_opts)
 
 -- Better escape using jk in insert and terminal mode
 keymap("i", "jk", "<ESC>", default_opts)
@@ -78,8 +77,8 @@ keymap("n", "<Down>", ":resize +1<CR>", default_opts)
 keymap("n", "<S-D-e>", "<cmd>NvimTreeFindFile<cr>", default_opts)
 
 -- Select all
-keymap('n', '<D-a>', 'gg<S-v>G', default_opts)
-keymap('i', '<D-v>', '<Esc>pa', default_opts)
+keymap("n", "<D-a>", "gg<S-v>G", default_opts)
+keymap("i", "<D-v>", "<Esc>pa", default_opts)
 
 -- Save with root permission (not working for now)
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
@@ -91,17 +90,16 @@ keymap('i', '<D-v>', '<Esc>pa', default_opts)
 -- keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
 -- Move window
 -- keymap.set('n', '<Space>', '<C-w>w')
-keymap('', '<D-w>o', '<C-w>o', default_opts)
-keymap('', '<D-w>q', '<C-w>q', default_opts)
-keymap('', '<D-w>s', '<C-w>s', default_opts)
-keymap('', '<D-w>v', '<C-w>v', default_opts)
-keymap('', '<D-w>h', '<C-w>h', default_opts)
-keymap('', '<D-w>k', '<C-w>k', default_opts)
-keymap('', '<D-w>j', '<C-w>j', default_opts)
-keymap('', '<D-w>l', '<C-w>l', default_opts)
-
-keymap('i', '<D-s>', '<Esc>:wa<CR>', default_opts)
-keymap('n', '<D-s>', '<Esc>:wa<CR>', default_opts)
+keymap("", "<D-w>o", "<C-w>o", default_opts)
+keymap("", "<D-w>q", "<C-w>q", default_opts)
+keymap("", "<D-w>s", "<C-w>s", default_opts)
+keymap("", "<D-w>v", "<C-w>v", default_opts)
+keymap("", "<D-w>h", "<C-w>h", default_opts)
+keymap("", "<D-w>k", "<C-w>k", default_opts)
+keymap("", "<D-w>j", "<C-w>j", default_opts)
+keymap("", "<D-w>l", "<C-w>l", default_opts)
+keymap("i", "<D-s>", "<Esc>:w<CR>", default_opts)
+keymap("n", "<D-s>", "<Esc>:w<CR>", default_opts)
 
 -- Resize window
 -- keymap.set('n', '<C-w><left>', '<C-w><')

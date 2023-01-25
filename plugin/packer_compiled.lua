@@ -129,10 +129,20 @@ _G.packer_plugins = {
     path = "/Users/harvey/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/lunarvim/darkplus.nvim"
   },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/Users/harvey/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
+  },
   ["emmet-vim"] = {
     loaded = true,
     path = "/Users/harvey/.local/share/nvim/site/pack/packer/start/emmet-vim",
     url = "https://github.com/mattn/emmet-vim"
+  },
+  ["exercism.vim"] = {
+    loaded = true,
+    path = "/Users/harvey/.local/share/nvim/site/pack/packer/start/exercism.vim",
+    url = "https://github.com/AndrewRadev/exercism.vim"
   },
   ["filetype.nvim"] = {
     loaded = true,
@@ -306,6 +316,11 @@ _G.packer_plugins = {
     path = "/Users/harvey/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
     url = "https://github.com/ThePrimeagen/refactoring.nvim"
   },
+  ["rtranslate.vim"] = {
+    loaded = true,
+    path = "/Users/harvey/.local/share/nvim/site/pack/packer/start/rtranslate.vim",
+    url = "https://github.com/AndrewRadev/rtranslate.vim"
+  },
   ["ruby-code-actions.nvim"] = {
     loaded = true,
     path = "/Users/harvey/.local/share/nvim/site/pack/packer/start/ruby-code-actions.nvim",
@@ -317,10 +332,20 @@ _G.packer_plugins = {
     path = "/Users/harvey/.local/share/nvim/site/pack/packer/start/smart-open.nvim",
     url = "https://github.com/danielfalk/smart-open.nvim"
   },
+  ["splitjoin.vim"] = {
+    loaded = true,
+    path = "/Users/harvey/.local/share/nvim/site/pack/packer/start/splitjoin.vim",
+    url = "https://github.com/AndrewRadev/splitjoin.vim"
+  },
   ["sqlite.lua"] = {
     loaded = true,
     path = "/Users/harvey/.local/share/nvim/site/pack/packer/start/sqlite.lua",
     url = "https://github.com/tami5/sqlite.lua"
+  },
+  ["switch.vim"] = {
+    loaded = true,
+    path = "/Users/harvey/.local/share/nvim/site/pack/packer/start/switch.vim",
+    url = "https://github.com/AndrewRadev/switch.vim"
   },
   ["targets.vim"] = {
     loaded = true,
@@ -361,6 +386,11 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/Users/harvey/.local/share/nvim/site/pack/packer/opt/ui",
     url = "https://github.com/NvChad/ui"
+  },
+  ["vgit.nvim"] = {
+    loaded = true,
+    path = "/Users/harvey/.local/share/nvim/site/pack/packer/start/vgit.nvim",
+    url = "https://github.com/tanvirtin/vgit.nvim"
   },
   ["vim-bundler"] = {
     loaded = true,
