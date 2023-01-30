@@ -1,0 +1,120 @@
+{
+  "String Interpolation": {
+    "prefix": "strint",
+    "scope": "ruby",
+    "body": [
+      "\"#{$1}\""
+    ],
+    "description": "String Interpolation"
+  },
+  "Filter": {
+    "prefix": ".filter",
+    "scope": "ruby",
+    "body": [
+      ".select"
+    ],
+    "description": "Filter"
+  },
+  "class": {
+    "prefix": "class",
+    "scope": "ruby",
+    "body": [
+      "class ${1:Classname}",
+      "$2",
+      "end"
+    ],
+    "description": "class"
+  },
+  "Class init": {
+    "prefix": "class init",
+    "scope": "ruby",
+    "body": [
+      "class ${1:ClassName}",
+      "\tdef initialize$2",
+      "\t\t$3",
+      "\tend",
+      "end"
+    ],
+    "description": "Class init"
+  },
+  "Declare Assign": {
+    "prefix": [
+      "da",
+      "Declare Assign"
+    ],
+    "scope": "ruby",
+    "body": [
+      "${1/([a-z]+)(?=[A-Z])|([A-Z])(?=[A-Z])|([A-Z][a-z]+)(?=$)|([A-Z][a-z]+)|([a-z]+)(?=$)/${1:/downcase}${1:+_}$2${2:+_}${3:/downcase}${4:/downcase}${4:+_}${5:/downcase}/g} = ${2}",
+    ],
+    "description": "Declare Assign"
+  },
+  "Declare Assign Const": {
+    "prefix": [
+      "dac",
+      "Declare Assign Const"
+    ],
+    "scope": "ruby",
+    "body": [
+      "${1/([a-z]+)(?=[A-Z])|([A-Z])(?=[A-Z])|([A-Z][a-z]+)(?=$)|([A-Z][a-z]+)|([a-z]+)(?=$)/${1:/upcase}${1:+_}$2${2:+_}${3:/upcase}${4:/upcase}${4:+_}${5:/upcase}/g} = ${2}",
+    ],
+    "description": "Declare Assign Const"
+  },
+  "Declare Class": {
+    "prefix": ["dc","Declare Class"],
+    "scope": "ruby",
+    "body": [
+      "class ${1/(.*)/${1:/capitalize}/}",
+      "\t$2",
+      "end"
+    ],
+    "description": "Declare Class"
+  },
+  "Declare Intance Method": {
+    "prefix": ["dim","Declare Intance Method"],
+    "scope": "ruby",
+    "body": [
+      "def ${1/([a-z]+)(?=[A-Z])|([A-Z])(?=[A-Z])|([A-Z][a-z]+)(?=$)|([A-Z][a-z]+)|([a-z]+)(?=$)/${1:/downcase}${1:+_}$2${2:+_}${3:/downcase}${4:/downcase}${4:+_}${5:/downcase}/g}($2)",
+      "\t$3",
+      "end"
+    ],
+    "description": "Declare Intance Method"
+  },
+  "Declare Class Method": {
+    "prefix": ["dcm","Declare Class Method"],
+    "scope": "ruby",
+    "body": [
+      "def self.${1/([a-z]+)(?=[A-Z])|([A-Z])(?=[A-Z])|([A-Z][a-z]+)(?=$)|([A-Z][a-z]+)|([a-z]+)(?=$)/${1:/downcase}${1:+_}$2${2:+_}${3:/downcase}${4:/downcase}${4:+_}${5:/downcase}/g}($2)",
+      "\t$3",
+      "end"
+    ],
+    "description": "Declare Class Method"
+  },
+  "Try Catch": {
+    "prefix": ["tryc","Try Catch"],
+    "scope": "ruby",
+    "body": [
+      "begin",
+      "\t$1",
+      "rescue $2 => e",
+      "\t$3",
+      "end"
+    ],
+    "description": "Try Catch"
+  },
+  "Declare Block": {
+    "prefix": ["db","Declare Block"],
+    "scope": "ruby",
+    "body": [
+      "{ |$1| $2 }"
+    ],
+    "description": "Declare Block"
+  },
+  "Find": {
+    "prefix": [".find","Find"],
+    "scope": "ruby",
+    "body": [
+      ".detect"
+    ],
+    "description": "Find"
+  },
+}

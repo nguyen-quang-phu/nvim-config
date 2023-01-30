@@ -62,6 +62,7 @@ vim.cmd [[
   filetype plugin indent on
   syntax on
   set ma
+  cnoreabbrev exercism Exercism
 ]]
 vim.cmd [[
 autocmd BufWritePre * :%s/\s\+$//e

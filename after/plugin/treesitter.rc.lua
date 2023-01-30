@@ -8,7 +8,10 @@ ts.setup {
   auto_install = true,
   highlight = {
     enable = true,
-    disable = { "eruby.yaml" },
+    disable = {
+      "embedded_template",
+      "ruby",
+    },
     additional_vim_regex_highlighting = true,
   },
   indent = {

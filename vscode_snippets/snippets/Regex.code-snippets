@@ -1,0 +1,9 @@
+{
+  "Split word": {
+    "prefix": "split word",
+    "body": [
+      "/\\b[\\w']+\\b/"
+    ],
+    "description": "Split word"
+  },
+}

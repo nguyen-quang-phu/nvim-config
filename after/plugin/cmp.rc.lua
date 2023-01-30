@@ -1,6 +1,8 @@
 local status, cmp = pcall(require, "cmp")
-if (not status) then return end
-local lspkind = require 'lspkind'
+if not status then
+  return
+end
+local lspkind = require "lspkind"
 
 vim.o.completeopt = "menu,menuone,noselect"
 local function border(hl_name)
@@ -25,7 +27,19 @@ cmp_window.info = function(self)
   return info
 end
 
-cmp.setup({
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      -- check if we created a snippet for this lsp-snippet.
+      if lspsnips[args.body] then
+        -- use `snip_expand` to expand the snippet at the cursor position.
+        require("luasnip").snip_expand(lspsnips[args.body])
+      else
+        require("luasnip").lsp_expand(args.body)
+      end
+    end,
+  },
+
   window = {
     completion = {
       border = border "CmpBorder",
@@ -40,24 +54,20 @@ cmp.setup({
   -- 	border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   -- 	scrollbar = "║",
   -- },
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
+  mapping = cmp.mapping.preset.insert {
+    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.close(),
+    ["<CR>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true
-    }),
+      select = true,
+    },
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif require("luasnip").expand_or_jumpable() then
+      --[[ if cmp.visible() then ]]
+      --[[   cmp.select_next_item() ]]
+      --[[ else ]]
+      if require("luasnip").expand_or_jumpable() then
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
       else
         fallback()
@@ -67,9 +77,10 @@ cmp.setup({
       "s",
     }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif require("luasnip").jumpable(-1) then
+      --[[ if cmp.visible() then ]]
+      --[[   cmp.select_prev_item() ]]
+      --[[ else ]]
+      if require("luasnip").jumpable(-1) then
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
       else
         fallback()
@@ -78,22 +89,30 @@ cmp.setup({
       "i",
       "s",
     }),
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+  },
+  sources = cmp.config.sources {
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
-    { name = 'emmet_vim' }
-  }),
+    { name = "emmet_vim" },
+  },
   formatting = {
-    format = function(_, vim_item)
+    format = function(entry, vim_item)
       local icons = require("nvchad_ui.icons").lspkind
       vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
+      vim_item.menu = ({
+        copilot = "[Copilot]",
+        luasnip = "LuaSnip",
+        nvim_lua = "[NVim Lua]",
+        nvim_lsp = "[LSP]",
+        buffer = "[Buffer]",
+        path = "[Path]",
+      })[entry.source.name]
       return vim_item
     end,
-  }
-})
+  },
+}
 -- File types specifics
 cmp.setup.filetype("gitcommit", {
   sources = cmp.config.sources({

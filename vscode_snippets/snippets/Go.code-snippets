@@ -1,0 +1,114 @@
+{
+  "Declare function": {
+    "prefix": "df",
+    "scope": "go",
+    "body": [
+      "func ${1:funcName}(${2:parameters}) ${3:typeReturn} {",
+      "\t$4",
+      "}",
+    ],
+    "description": "Declare function"
+  },
+  "Declare Assign": {
+    "prefix": "da",
+    "scope": "go",
+    "body": [
+      "var ${1:varName} ${2:type} = ${3:value}"
+    ],
+    "description": "Declare Assign"
+  },
+  "Declare Assign Const": {
+    "prefix": "dac",
+    "scope": "go",
+    "body": [
+      "const ${1:varName} ${2:type} = ${3:value}"
+    ],
+    "description": "Declare Assign Const"
+  },
+  "For": {
+    "prefix": "for",
+    "scope": "go",
+    "body": [
+      "for ${1:i} := 0; $1 < ${2:count}; $1++ {",
+      "\t$3",
+      "}"
+    ],
+    "description": "For"
+  },
+  "While": {
+    "prefix": "while",
+    "scope": "go",
+    "body": [
+      "for ${1:condition} {",
+      "\t$2",
+      "}"
+    ],
+    "description": "While"
+  },
+  "Forever": {
+    "prefix": "forever",
+    "scope": "go",
+    "body": [
+      "for {",
+      "\t$1",
+      "}"
+    ],
+    "description": "Forever"
+  },
+  "Assignment": {
+    "prefix": "as",
+    "scope": "go",
+    "body": [
+      ":= "
+    ],
+    "description": "Assignment"
+  },
+  "If": {
+    "prefix": "if",
+    "scope": "go",
+    "body": [
+      "if ${1:condition} {",
+      "\t$2",
+      "}"
+    ],
+    "description": "If"
+  },
+  "If else": {
+    "prefix": "ife",
+    "scope": "go",
+    "body": [
+      "if ${1:condition} {",
+      "\t$2",
+      "} else {",
+      "\t$3",
+      "}",
+    ],
+    "description": "If else"
+  },
+  "Struct": {
+    "prefix": "struct",
+    "scope": "go",
+    "body": [
+      "type ${1:structName} struct {",
+      "\t$2",
+      "}"
+    ],
+    "description": "Struct"
+  },
+  "Declare Array": {
+    "prefix": "darr",
+    "scope": "go",
+    "body": [
+      "var ${1:arrayName} [${2:numElement}]${3:typeName}"
+    ],
+    "description": "Declare Array"
+  },
+  "Slices": {
+    "prefix": ".slice",
+    "scope": "go",
+    "body": [
+      "[${1:low}:${2:high}]"
+    ],
+    "description": "Slices"
+  },
+}

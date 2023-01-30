@@ -1,7 +1,9 @@
 local status, null_ls = pcall(require, "null-ls")
-if (not status) then return end
+if not status then
+  return
+end
 
-local ruby_code_actions = require("ruby-code-actions")
+local ruby_code_actions = require "ruby-code-actions"
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local diagnostics = require("null-ls").builtins.diagnostics
 local formatting = require("null-ls").builtins.formatting
@@ -14,26 +16,26 @@ end
 
 local sources = {
   -- check spell
-  diagnostics.cspell.with({
-    diagnostics_format = '[cspell] #{m}\n(#{c})'
-  }),
+  diagnostics.cspell.with {
+    diagnostics_format = "[cspell] #{m}\n(#{c})",
+  },
   code_actions.cspell,
 
   -- eslint
   code_actions.eslint_d,
   formatting.prettierd,
-  diagnostics.eslint_d.with({
-    diagnostics_format = '[eslint] #{m}\n(#{c})'
-  }),
+  diagnostics.eslint_d.with {
+    diagnostics_format = "[eslint] #{m}\n(#{c})",
+  },
   -- null_ls.builtins.code_actions.gitsigns,
   -- null_ls.builtins.diagnostics.cspell,
   -- null_ls.builtins.code_actions.cspell,
   -- null_ls.builtins.diagnostics.rubocop,
   -- null_ls.builtins.code_actions.rubocop
   formatting.rubocop,
-  diagnostics.rubocop.with({
-    diagnostics_format = '[rubocop] #{m}\n(#{c})'
-  }),
+  diagnostics.rubocop.with {
+    diagnostics_format = "[rubocop] #{m}\n(#{c})",
+  },
   ruby_code_actions.insert_frozen_string_literal,
   ruby_code_actions.autocorrect_with_rubocop,
   formatting.stylua,
@@ -44,40 +46,34 @@ local sources = {
 }
 
 local on_attach = function(client, bufnr)
-  if client.supports_method("textDocument/formatting") then
-    vim.api.nvim_buf_create_user_command(bufnr, "LspFormatting",
-      function(bufnr)
-        vim.lsp.buf.format({
-          filter = function(client)
-            return client.name == "null-ls"
-          end,
-          bufnr = bufnr,
-        })
-      end
-      , {})
+  if client.supports_method "textDocument/formatting" then
+    vim.api.nvim_buf_create_user_command(bufnr, "LspFormatting", function(bufnr)
+      vim.lsp.buf.format {
+        filter = function(client)
+          return client.name == "null-ls"
+        end,
+        bufnr = bufnr,
+      }
+    end, {})
 
-    vim.api.nvim_clear_autocmds({
+    vim.api.nvim_clear_autocmds {
       group = augroup,
       buffer = bufnr,
-    })
+    }
 
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = bufnr,
-      command = "undojoin | LspFormatting",
-    })
+    --[[ vim.api.nvim_create_autocmd("BufWritePre", { ]]
+    --[[   group = augroup, ]]
+    --[[   buffer = bufnr, ]]
+    --[[   command = "undojoin | LspFormatting", ]]
+    --[[ }) ]]
   end
 end
 null_ls.setup {
   debug = true,
   sources = sources,
-  on_attach = on_attach
+  on_attach = on_attach,
 }
 
-vim.api.nvim_create_user_command(
-  'DisableLspFormatting',
-  function()
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = 0 })
-  end,
-  { nargs = 0 }
-)
+vim.api.nvim_create_user_command("DisableLspFormatting", function()
+  vim.api.nvim_clear_autocmds { group = augroup, buffer = 0 }
+end, { nargs = 0 })

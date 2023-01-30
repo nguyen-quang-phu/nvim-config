@@ -40,16 +40,16 @@ keymap("n", "<D-i>", "<C-i>", default_opts)
 keymap("v", "<D-/>", "gc", default_opts)
 
 -- Better escape using jk in insert and terminal mode
-keymap("i", "jk", "<ESC>", default_opts)
-keymap("t", "jk", "<C-\\><C-n>", default_opts)
+--[[ keymap("i", "jk", "<ESC>", default_opts) ]]
+--[[ keymap("t", "jk", "<C-\\><C-n>", default_opts) ]]
 
 -- Center search results
 keymap("n", "n", "nzz", default_opts)
 keymap("n", "N", "Nzz", default_opts)
 
 -- Visual line wraps
-keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_opts)
-keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_opts)
+--[[ keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_opts) ]]
+--[[ keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_opts) ]]
 
 -- Better indent
 keymap("v", "<", "<gv", default_opts)
@@ -79,6 +79,7 @@ keymap("n", "<S-D-e>", "<cmd>NvimTreeFindFile<cr>", default_opts)
 -- Select all
 keymap("n", "<D-a>", "gg<S-v>G", default_opts)
 keymap("i", "<D-v>", "<Esc>pa", default_opts)
+keymap("c", "<D-v>", "<C-r>*", default_opts)
 
 -- Save with root permission (not working for now)
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})

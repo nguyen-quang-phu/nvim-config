@@ -1,0 +1,18 @@
+{
+  "Http Get": {
+    "prefix": "vget",
+    "scope": "ruby",
+    "body": [
+      "get \"${1:controller}\", to: \"$1#${2:action}\", as: :$1"
+    ],
+    "description": "Http Get"
+  },
+  "Http Root": {
+    "prefix": "vroot",
+    "scope": "ruby",
+    "body": [
+      "root to: \"main#index\""
+    ],
+    "description": "Http Root"
+  },
+}

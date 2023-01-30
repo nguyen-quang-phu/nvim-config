@@ -1,0 +1,98 @@
+{
+  // Typescript
+  // Typescript React
+  //HTML
+  "Button": {
+    "prefix": "button",
+    "body": [
+      "<button type=\"button\">",
+      "$0",
+      "</button>"
+    ],
+    "description": "Button HTML"
+  },
+  "Div With Classes": {
+    "prefix": "dwc",
+    "body": [
+      "<div className={classes.$1}>$2</div>"
+    ],
+    "description": "Div with classes"
+  },
+  "Create Full Tag": {
+    "prefix": "cft",
+    "body": [
+      "<$1>$0</$1>"
+    ],
+    "description": "Create Full Tag"
+  },
+  //CSS color
+  "CSS grey": {
+    "prefix": "grey",
+    "body": [
+      "#808080"
+    ],
+    "description": "CSS grey"
+  },
+  // React
+  "React Arrow Function Component Export": {
+    "prefix": [
+      "rafce",
+      "ReactArrowFunctionComponentExport"
+    ],
+    "body": [
+      "import React from 'react';",
+      "",
+      "import classes from './${1}.module.scss';",
+      "",
+      "interface ${1}Props {",
+      "  template?: string;",
+      "}",
+      "const ${1:$TM_FILENAME_BASE}: React.FC<${1}Props> = ({ template }) => {",
+      "// Hook states",
+      "",
+      "// Hook effects",
+      "",
+      "// Constants",
+      "",
+      "// Action handlers",
+      "",
+      "// Renderers",
+      "",
+      "  const temp = 0;",
+      "  return <div className={classes.${1/(.*)/${1:/camelcase}/}Container}>$1$0</div>;",
+      "};",
+      "",
+      "${1}.defaultProps = {};",
+      "export default ${1};"
+    ],
+    "description": "React Module Arrow Function Component Export"
+  },
+  "Use State": {
+    "prefix": [
+      "us",
+      "UseState"
+    ],
+    "body": [
+      "const [${1:value}, set${1/(.*)/${1:/capitalize}/}] = useState<$2>($3);$0"
+    ],
+    "description": "Use State"
+  },
+  "Use Translation": {
+    "prefix": [
+      "ut",
+      "UseTranslation"
+    ],
+    "body": [
+      "const [t] = useTranslation();"
+    ],
+    "description": "Use Translation"
+  },
+  "Type Set State Action": {
+    "prefix": "tssa",
+    "scope": "typescript,typescriptreact,javascript,javascriptreact",
+    "body": [
+      "Dispatch<SetStateAction<$1 | undefined>>"
+    ],
+    "description": "Type Set State Action"
+  },
+}

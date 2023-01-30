@@ -1,0 +1,34 @@
+{
+  "Create Snippet": {
+    "prefix": "cs",
+    "scope": "json",
+    "body": [
+      "\"${1/([a-z]+)(?=[A-Z])|([A-Z])(?=[A-Z])|([A-Z][a-z]+)(?=$)|([A-Z][a-z]+)|([a-z]+)(?=$)/${1:/capitalize}${1:+ }$2${2:+ }${3:/capitalize}${4:/capitalize}${4:+ }${5:/capitalize}/g}\": {",
+      "\t\"prefix\": [\"${1/(^.)|([A-Z])|([a-z]+)/${1:/downcase}${2:/downcase}/g}\",\"${1/([a-z]+)(?=[A-Z])|([A-Z])(?=[A-Z])|([A-Z][a-z]+)(?=$)|([A-Z][a-z]+)|([a-z]+)(?=$)/${1:/capitalize}${1:+ }$2${2:+ }${3:/capitalize}${4:/capitalize}${4:+ }${5:/capitalize}/g}\"],",
+      "\t\"scope\": \"$3\",",
+      "\t\"body\": [",
+      "\t\t\"$4\"",
+      "\t],",
+      "\t\"description\": \"${1/([a-z]+)(?=[A-Z])|([A-Z])(?=[A-Z])|([A-Z][a-z]+)(?=$)|([A-Z][a-z]+)|([a-z]+)(?=$)/${1:/capitalize}${1:+ }$2${2:+ }${3:/capitalize}${4:/capitalize}${4:+ }${5:/capitalize}/g}\"",
+      "},"
+    ],
+    "description": "Create Snippet"
+  },
+  "Create Snippet Typescript And Javascript": {
+    "prefix": "cstsjs",
+    "scope": "json",
+    "body": [
+      "\"${1/([a-z]+)(?=[A-Z])|([A-Z])(?=[A-Z])|([A-Z][a-z]+)(?=$)|([A-Z][a-z]+)|([a-z]+)(?=$)/${1:/capitalize}${1:+ }$2${2:+ }${3:/capitalize}${4:/capitalize}${4:+ }${5:/capitalize}/g}\": {",
+      "\t\"prefix\": [\"${1/(^.)|([A-Z])|([a-z]+)/${1:/downcase}${2:/downcase}/g}\",\"${1/([a-z]+)(?=[A-Z])|([A-Z])(?=[A-Z])|([A-Z][a-z]+)(?=$)|([A-Z][a-z]+)|([a-z]+)(?=$)/${1:/capitalize}${1:+ }$2${2:+ }${3:/capitalize}${4:/capitalize}${4:+ }${5:/capitalize}/g}\"],",
+      "\t\"scope\": \"typescript,typescriptreact,javascript,javascriptreact\",",
+      "\t\"body\": [",
+      "\t\t\"$4\"",
+      "\t],",
+      "\t\"description\": \"$1\"",
+      "},"
+    ],
+    "description": "Create Snippet Typescript And Javascript"
+  },
+}
+
+

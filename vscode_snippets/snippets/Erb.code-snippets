@@ -1,0 +1,51 @@
+{
+  "link_to": {
+    "prefix": [
+      "lt",
+      "linkto"
+    ],
+    "scope": "erb",
+    "body": [
+      "<%= link_to \"${1:content}\", ${2:name}_path, class: \"${3:class}\" %>"
+    ],
+    "description": "link_to"
+  },
+  "partial": {
+    "prefix": [
+      "partial"
+    ],
+    "scope": "erb",
+    "body": [
+      "<%= render partial: \"$1\" %>"
+    ],
+    "description": "partial"
+  },
+  "Expression tags": {
+    "prefix": "expt",
+    "scope": "erb",
+    "body": [
+      "<%= $1 %>"
+    ],
+    "description": "Expression tags"
+  },
+  "Execution tags": {
+    "prefix": "exet",
+    "scope": "erb",
+    "body": [
+      "<% $1 %>",
+      "$2",
+      "<% end %>"
+    ],
+    "description": "Execution tags"
+  },
+  "create full tag": {
+    "prefix": "cft",
+    "scope": "erb",
+    "body": [
+      "<div>",
+      "$1",
+      "</div>"
+    ],
+    "description": "create full tag"
+  },
+}

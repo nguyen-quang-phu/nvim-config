@@ -72,7 +72,7 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip"
 
   -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
+  use { "L3MON4D3/LuaSnip", run = "make install_jsregexp" } --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- utils
@@ -238,6 +238,8 @@ return packer.startup(function(use)
   use "AndrewRadev/rtranslate.vim"
   use "AndrewRadev/exercism.vim"
   use "AndrewRadev/switch.vim"
+  use "aperezdc/vim-template"
+  use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

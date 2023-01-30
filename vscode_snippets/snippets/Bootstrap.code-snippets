@@ -1,0 +1,26 @@
+{
+  "display:flex": {
+    "prefix": "df",
+    "scope": "erb",
+    "body": [
+      "d-flex "
+    ],
+    "description": "display:flex"
+  },
+  "align-items: center": {
+    "prefix": "aic",
+    "scope": "erb",
+    "body": [
+      "align-items-center "
+    ],
+    "description": "align-items: center"
+  },
+  "justify-content: center": {
+    "prefix": "jcc",
+    "scope": "erb",
+    "body": [
+      "justify-content-center "
+    ],
+    "description": "justify-content: center"
+  },
+}
