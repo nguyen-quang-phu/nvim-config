@@ -9,6 +9,15 @@ local diagnostics = require("null-ls").builtins.diagnostics
 local formatting = require("null-ls").builtins.formatting
 local code_actions = require("null-ls").builtins.code_actions
 
+local lsp_formatting = function(bufnr)
+  vim.lsp.buf.format({
+    filter = function(client)
+      return client.name == "null-ls"
+    end,
+    bufnr = bufnr,
+  })
+end
+
 local conditional = function(fn)
   local utils = require("null-ls.utils").make_conditional_utils()
   return fn(utils)
@@ -24,6 +33,7 @@ local sources = {
   -- eslint
   code_actions.eslint_d,
   formatting.prettierd,
+  formatting.eslint_d,
   diagnostics.eslint_d.with {
     diagnostics_format = "[eslint] #{m}\n(#{c})",
   },
@@ -45,29 +55,18 @@ local sources = {
   -- },
 }
 
-local on_attach = function(client, bufnr)
-  if client.supports_method "textDocument/formatting" then
-    vim.api.nvim_buf_create_user_command(bufnr, "LspFormatting", function(bufnr)
-      vim.lsp.buf.format {
-        filter = function(client)
-          return client.name == "null-ls"
+local   on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          lsp_formatting(bufnr)
         end,
-        bufnr = bufnr,
-      }
-    end, {})
-
-    vim.api.nvim_clear_autocmds {
-      group = augroup,
-      buffer = bufnr,
-    }
-
-    --[[ vim.api.nvim_create_autocmd("BufWritePre", { ]]
-    --[[   group = augroup, ]]
-    --[[   buffer = bufnr, ]]
-    --[[   command = "undojoin | LspFormatting", ]]
-    --[[ }) ]]
+      })
+    end
   end
-end
 null_ls.setup {
   debug = true,
   sources = sources,

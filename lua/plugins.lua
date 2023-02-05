@@ -94,7 +94,7 @@ return packer.startup(function(use)
   use "jayp0521/mason-null-ls.nvim"
   use "jose-elias-alvarez/null-ls.nvim" -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
 
-  -- use { 'glepnir/lspsaga.nvim', branch = "main" } -- LSP UIs
+  --[[ use { "glepnir/lspsaga.nvim", branch = "main" } -- LSP UIs ]]
   use { "kkharji/lspsaga.nvim" }
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -121,6 +121,7 @@ return packer.startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable "make" == 1 }
   use "nvim-telescope/telescope-file-browser.nvim"
+  use "BurntSushi/ripgrep"
 
   -- Show current code context (method name, etc.)
   use {
@@ -129,14 +130,14 @@ return packer.startup(function(use)
   }
 
   -- Nice looking modal notifications that fade away
-  -- use {
-  --   'rcarriga/nvim-notify',
-  --   config = function()
-  --     require("notify").setup({
-  --       background_colour = "#000000",
-  --     })
-  --   end
-  -- }
+  use {
+    "rcarriga/nvim-notify",
+    config = function()
+      require("notify").setup {
+        background_colour = "#000000",
+      }
+    end,
+  }
   --
   -- -- LSP server notifications using nvim-notify
   -- use {
@@ -240,6 +241,15 @@ return packer.startup(function(use)
   use "AndrewRadev/switch.vim"
   use "aperezdc/vim-template"
   use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
+  use "folke/twilight.nvim"
+
+  use {
+    "nvim-telescope/telescope-frecency.nvim",
+    config = function()
+      require("telescope").load_extension "frecency"
+    end,
+    requires = { "kkharji/sqlite.lua" },
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -1,44 +1,46 @@
 local status, telescope = pcall(require, "telescope")
-if (not status) then return end
-local actions = require('telescope.actions')
-local action_set = require("telescope.actions.set")
-local builtin = require("telescope.builtin")
+if not status then
+  return
+end
+local actions = require "telescope.actions"
+local action_set = require "telescope.actions.set"
+local builtin = require "telescope.builtin"
 
 local function telescope_buffer_dir()
-  return vim.fn.expand('%:p:h')
+  return vim.fn.expand "%:p:h"
 end
 
-local fb_actions = require "telescope".extensions.file_browser.actions
+local fb_actions = require("telescope").extensions.file_browser.actions
 
 telescope.setup {
   pickers = {
-    current_buffer_fuzzy_find = { sorting_strategy = 'ascending' },
+    current_buffer_fuzzy_find = { sorting_strategy = "ascending" },
     find_files = {
       hidden = true,
       attach_mappings = function(_)
-        action_set.select:enhance({
+        action_set.select:enhance {
           post = function()
-            vim.cmd(":normal! zx")
+            vim.cmd ":normal! zx"
           end,
-        })
+        }
         return true
       end,
     },
   },
   defaults = {
     ripgrep_arguments = {
-      'rg',
-      '--hidden',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case'
+      "rg",
+      "--hidden",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
     },
-    file_ignore_patterns = { "^node_modules/", "^vendor/", "^.history/", "^.git/*" },
+    file_ignore_patterns = { "node_modules", "vendor", ".history", ".git", "tags", ".tags" },
     mappings = {
       n = {
-        ["<ESC>"] = actions.close
+        ["<ESC>"] = actions.close,
       },
       i = {
         ["<esc>"] = actions.close,
@@ -82,15 +84,17 @@ telescope.setup {
       mappings = {
         -- your custom insert mode mappings
         ["i"] = {
-          ["<C-w>"] = function() vim.cmd('normal vbd') end,
+          ["<C-w>"] = function()
+            vim.cmd "normal vbd"
+          end,
         },
         ["n"] = {
           -- your custom normal mode mappings
           ["N"] = fb_actions.create,
           ["h"] = fb_actions.goto_parent_dir,
           ["/"] = function()
-            vim.cmd('startinsert')
-          end
+            vim.cmd "startinsert"
+          end,
         },
       },
     },
@@ -103,33 +107,32 @@ telescope.setup {
   },
 }
 
-telescope.load_extension("file_browser")
-telescope.load_extension("fzf")
+telescope.load_extension "file_browser"
+telescope.load_extension "fzf"
 
-vim.keymap.set('n', '<D-p>',
-  function()
-    builtin.find_files({
-      no_ignore = true,
-      hidden = true
-    })
-  end)
-vim.keymap.set('n', '<S-D-f>', function()
+vim.keymap.set("n", "<D-p>", function()
+  builtin.find_files {
+    no_ignore = true,
+    hidden = true,
+  }
+end)
+vim.keymap.set("n", "<S-D-f>", function()
   builtin.live_grep()
 end)
-vim.keymap.set('n', '\\\\', function()
+vim.keymap.set("n", "\\\\", function()
   builtin.buffers()
 end)
-vim.keymap.set('n', ';t', function()
+vim.keymap.set("n", ";t", function()
   builtin.help_tags()
 end)
-vim.keymap.set('n', ';;', function()
+vim.keymap.set("n", ";;", function()
   builtin.resume()
 end)
-vim.keymap.set('n', ';e', function()
+vim.keymap.set("n", ";e", function()
   builtin.diagnostics()
 end)
 vim.keymap.set("n", "sf", function()
-  telescope.extensions.file_browser.file_browser({
+  telescope.extensions.file_browser.file_browser {
     path = "%:p:h",
     cwd = telescope_buffer_dir(),
     respect_gitignore = true,
@@ -137,6 +140,6 @@ vim.keymap.set("n", "sf", function()
     grouped = true,
     previewer = false,
     initial_mode = "normal",
-    layout_config = { height = 40 }
-  })
+    layout_config = { height = 40 },
+  }
 end)
