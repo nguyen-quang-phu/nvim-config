@@ -3,9 +3,9 @@ if not status then
   return
 end
 
---[[ require("luasnip.loaders.from_lua").load { paths = "~/.config/nvim/snippets/" } ]]
+require("luasnip.loaders.from_lua").load { paths = "~/.config/nvim/snippets/" }
 --[[ require("luasnip.loaders.from_vscode").lazy_load() ]]
-require("luasnip.loaders.from_vscode").lazy_load { paths = "~/.config/nvim/vscode_snippets" }
+--[[ require("luasnip.loaders.from_vscode").lazy_load { paths = "~/.config/nvim/vscode_snippets" } ]]
 luasnip.config.setup { store_selection_keys = "<A-p>" }
 
 local types = require "luasnip.util.types"

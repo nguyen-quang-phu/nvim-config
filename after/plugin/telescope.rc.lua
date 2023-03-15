@@ -37,7 +37,7 @@ telescope.setup {
       "--column",
       "--smart-case",
     },
-    file_ignore_patterns = { "node_modules", "vendor", ".history", ".git", "tags", ".tags" },
+    file_ignore_patterns = { "node_modules", "vendor", ".history", ".git", "tags", ".tags", "tmp", "log", "dist" },
     mappings = {
       n = {
         ["<ESC>"] = actions.close,

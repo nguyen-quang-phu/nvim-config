@@ -45,7 +45,7 @@ local on_attach = function(client, bufnr)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]],
+    ]] ,
       false
     )
   end
@@ -64,9 +64,8 @@ local on_attach = function(client, bufnr)
           local items = result.items or result
           for _, item in ipairs(items) do
             -- override snippets for kind `field`, matching the snippets for member initializer lists.
-            if
-              item.kind == vim.lsp.protocol.CompletionItemKind.Field
-              and item.textEdit.newText:match "^[%w_]+%(${%d+:[%w_]+}%)$"
+            if item.kind == vim.lsp.protocol.CompletionItemKind.Field
+                and item.textEdit.newText:match "^[%w_]+%(${%d+:[%w_]+}%)$"
             then
               local snip_text = item.textEdit.newText
               local name = snip_text:match "^[%w_]+"
@@ -158,7 +157,7 @@ nvim_lsp.sourcekit.setup {
   capabilities = capabilities,
 }
 
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.lua_ls.setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
@@ -203,6 +202,11 @@ nvim_lsp.solargraph.setup {
       diagnostics = false,
     },
   },
+}
+
+nvim_lsp.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

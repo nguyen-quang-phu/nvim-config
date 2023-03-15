@@ -91,7 +91,7 @@ return packer.startup(function(use)
   use { "nvim-lualine/lualine.nvim", requires = { "SmiteshP/nvim-gps" } } -- Statusline
   use "lukas-reineke/indent-blankline.nvim" -- Add indentation guides even on blank lines
   use { "numToStr/Comment.nvim", requires = { "JoosepAlviste/nvim-ts-context-commentstring" } } -- "gc" to comment visual regions/lines
-  use "jayp0521/mason-null-ls.nvim"
+  --[[ use "jayp0521/mason-null-ls.nvim" ]]
   use "jose-elias-alvarez/null-ls.nvim" -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
 
   --[[ use { "glepnir/lspsaga.nvim", branch = "main" } -- LSP UIs ]]
@@ -195,7 +195,7 @@ return packer.startup(function(use)
   use "https://github.com/whatyouhide/vim-textobj-erb"
   use "mattn/emmet-vim"
   use "dcampos/cmp-emmet-vim"
-  use "tpope/vim-endwise"
+  --[[ use "tpope/vim-endwise" ]]
   use "tpope/vim-bundler"
   use "thoughtbot/vim-rspec"
   use "machakann/vim-textobj-delimited"
@@ -243,12 +243,27 @@ return packer.startup(function(use)
   use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
   use "folke/twilight.nvim"
 
+  --[[ use "rainerborene/vim-reek" ]]
+
   use {
     "nvim-telescope/telescope-frecency.nvim",
     config = function()
       require("telescope").load_extension "frecency"
     end,
     requires = { "kkharji/sqlite.lua" },
+  }
+  use {
+    "echasnovski/mini.nvim",
+    branch = "stable",
+    config = function()
+      require("mini.cursorword").setup {}
+    end,
+  }
+  use {
+    "glacambre/firenvim",
+    run = function()
+      vim.fn["firenvim#install"](0)
+    end,
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
